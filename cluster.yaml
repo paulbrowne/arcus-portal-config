@@ -22,10 +22,6 @@ nodeGroups:
     machineCount: 3
 
 addons:
-  jobImage:
-    tag: 91c7b7d
-  chart:
-    version: 0.1.0-dev.0.main.74
   values:
     ingress:
       nginx:
