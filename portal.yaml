@@ -1,0 +1,41 @@
+tags:
+  apps: true
+
+ingress:
+  enabled: true
+  host: portal.apps.hpc.cam.ac.uk
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-http01
+  className: nginx
+
+settings:
+  # The available clouds
+  availableClouds:
+    - name: arcus
+      label: Arcus Cloud
+      url: http://portal.apps.hpc.cam.ac.uk/dashboard
+  currentCloud: arcus
+
+provider:
+  openstack:
+    authUrl: https://arcus.openstack.hpc.cam.ac.uk:5000/v3
+
+zenith:
+  sshd:
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 128.232.222.229
+  sync:
+    config:
+      kubernetes:
+        ingress:
+          baseDomain: apps.hpc.cam.ac.uk
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-http01
+          className: nginx
+
+# Cilium doesn't support hostPort
+consul:
+  client:
+    dnsPolicy: ClusterFirstWithHostNet
+    hostNetwork: true

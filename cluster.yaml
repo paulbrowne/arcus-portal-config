@@ -1,0 +1,36 @@
+kubernetesVersion: 1.22.2
+
+machineImageId: 808e3a2f-c650-460c-95d1-2ee1410d9c08
+
+machineSSHKeyName: mattp-stack-aae3c226
+
+apiServer:
+  enableLoadBalancer: true
+  associateFloatingIP: true
+  floatingIP: 128.232.222.11
+
+controlPlane:
+  machineFlavor: vm.v1.small
+  machineRootVolumeSize: 40
+
+nodeGroupDefaults:
+  machineFlavor: vm.v1.small
+  machineRootVolumeSize: 40
+
+nodeGroups:
+  - name: md-0
+    machineCount: 3
+
+addons:
+  jobImage:
+    tag: 91c7b7d
+  chart:
+    version: 0.1.0-dev.0.main.74
+  values:
+    ingress:
+      nginx:
+        values:
+          controller:
+            service:
+              # This is the IP address that *.apps.hpc.cam.ac.uk is assigned to
+              loadBalancerIP: 128.232.222.202
