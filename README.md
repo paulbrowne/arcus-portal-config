@@ -1,14 +1,14 @@
 # arcus-portal-config
 
-This repository holds the configuration for the Arcus deployment of the Azimuth portal.
+This repository holds the configuration for the Arcus deployment of the Azimuth portal. The
+portal runs on a Kubernetes cluster in a project on the Arcus cloud. As well as hosting
+the portal, the Kubernetes cluster is also a Cluster API management cluster that manages itself.
 
-In order to apply the configuration, a `clouds.yaml` containing an application credential
-for the `rcp-cloud-portal-dev` project on Arcus and a `kubeconfig` for the portal Kubernetes
-cluster (which is also the Cluster API management cluster for itself) are required.
+The repository includes two credentials files, which are encrypted using
+[git-crypt](https://github.com/AGWA/git-crypt):
 
-> **WARNING**
->
-> The `clouds.yaml` should be the same one used to deploy the cluster.
+  * `clouds.yaml`: application credential for the `rcp-cloud-portal-dev` project on Arcus
+  * `kubeconfig`: credentials for the portal Kubernetes cluster
 
 ## Cluster configuration
 
