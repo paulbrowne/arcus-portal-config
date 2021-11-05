@@ -1,2 +1,3 @@
 clouds.yaml filter=git-crypt diff=git-crypt
 kubeconfig filter=git-crypt diff=git-crypt
+STAR_apps_hpc_cam_ac_uk.key filter=git-crypt diff=git-crypt
